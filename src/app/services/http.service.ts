@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICurrentTemperatureResponse } from '../contracts/current-temperature-response.interface';
+import { IFiveDayForecastResponse } from '../contracts/five-day-forecast-response.interface';
 
 @Injectable()
 export class HttpService {
@@ -18,7 +19,7 @@ export class HttpService {
     return this.httpClient.get<ICurrentTemperatureResponse>(`${this.apiUrl}/weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}`);
   }
 
-  public getFiveDayTemperaturesByName(location: string) {
-
+  public getFiveDayTemperaturesByName(location: string): Observable<IFiveDayForecastResponse> {
+    return this.httpClient.get<any>(`${this.apiUrl}/forecast?q=${location}&appid=${this.apiKey}`);
   }
 }

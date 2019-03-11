@@ -10,12 +10,13 @@ import { ICurrentTemperatureResponse } from '../contracts/current-temperature-re
 })
 export class CurrentTemperatureComponent implements OnInit, OnDestroy {
   private currentLocation: string;
+  private subscriptions: Subscription[] = [];
+
   public temperature: number;
   public humidity: number;
   public pressure: number;
   public weather: string;
   public icon: string;
-  private subscriptions: Subscription[] = [];
   constructor(
     private httpService: HttpService
     ) {

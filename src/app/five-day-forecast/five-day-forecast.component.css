@@ -1,0 +1,16 @@
+mat-card-content {
+    display: flex;
+}
+
+mat-card-content div.additional-info {
+    padding: 20px;
+}
+
+mat-card-content div.temperature {
+    font: sans-serif;
+    font-size: 20px;
+}
+
+div.list-item {
+    padding: 20px;
+}

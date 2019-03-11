@@ -1,9 +1,10 @@
-import { ICurrentTemperatureMain } from './current-temperature-main.interface';
-import { ICurrentTemperatureWeather } from './current-temperature-weather.interface';
+import { IMain } from './main.interface';
+import { IWeather } from './weather.interface';
 
 export interface ICurrentTemperatureResponse {
+    dt_txt?: string;
     coord: any;
-    weather: ICurrentTemperatureWeather[];
-    main: ICurrentTemperatureMain;
+    weather: IWeather[];
+    main: IMain;
     name: string;
 }

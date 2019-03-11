@@ -1,4 +1,4 @@
-export interface ICurrentTemperatureMain {
+export interface IMain {
     temp: number;
     pressure: number;
     humidity: number;

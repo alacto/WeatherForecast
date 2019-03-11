@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-header>
+      <mat-card-title>5 Day Forecast</mat-card-title>
+      <mat-card-subtitle>
+        <span>{{currentLocation}}</span>
+        </mat-card-subtitle>
+    </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <div class="list-item" *ngFor="let forecast of forecasts">
+      <mat-list-item>
+            <div>
+              <div>Date: {{forecast.datetime}}</div>
+              <div class="temperature">{{forecast.temperature}} °F</div>
+            </div>
+            <div class="additional-info">
+              <span>
+                <div>Humidity: {{forecast.humidity}}</div>
+                <div>Pressure: {{forecast.pressure}}</div>
+              </span>
+            </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
