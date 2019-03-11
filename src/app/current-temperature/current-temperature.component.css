@@ -1,0 +1,19 @@
+.current-temp-card {
+    max-width: 500px;
+}
+
+mat-card-content.current-temp-card {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.current-temp-card span.temparature-readout {
+    font: sans-serif;
+    font-size: 30px;
+}
+
+.current-temp-card .additional-information {
+    font: sans-serif;
+    font-size: 15px;
+    float: right;
+}
