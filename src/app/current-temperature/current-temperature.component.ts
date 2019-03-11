@@ -2,6 +2,7 @@ import { HttpService } from './../services/http.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ICurrentTemperatureResponse } from '../contracts/current-temperature-response.interface';
+import { LocationService } from '../services/location.service';
 
 @Component({
   selector: 'current-temperature',
@@ -18,12 +19,19 @@ export class CurrentTemperatureComponent implements OnInit, OnDestroy {
   public weather: string;
   public icon: string;
   constructor(
-    private httpService: HttpService
-    ) {
-      this.currentLocation = 'Detroit';
-    }
+    private httpService: HttpService,
+    private locationService: LocationService
+    ) { }
 
   public ngOnInit(): void {
+    this.subscriptions.push(this.locationService.getUserLocation().subscribe({
+      next: (data) => {
+        this.currentLocation = data;
+        this.httpService.getCurrentTemperatureByName(this.currentLocation).toPromise().then(results => {
+          this.mapWeatherResponseData(results);
+        });
+      }
+    }));
     this.subscriptions.push(this.httpService.getCurrentTemperatureByName(this.currentLocation).subscribe({
       next: (data) => {
         this.mapWeatherResponseData(data);

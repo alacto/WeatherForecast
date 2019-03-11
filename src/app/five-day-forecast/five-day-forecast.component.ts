@@ -1,3 +1,4 @@
+import { LocationService } from './../services/location.service';
 import { HttpService } from './../services/http.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -13,11 +14,20 @@ export class FiveDayForecastComponent implements OnInit {
   private subscriptions: Subscription[] = [];
 
   public forecasts;
-  constructor(private httpService: HttpService) {
-    this.currentLocation = 'Detroit';
-  }
+  constructor(
+    private httpService: HttpService,
+    private locationService: LocationService
+    ) { }
 
   ngOnInit() {
+    this.subscriptions.push(this.locationService.getUserLocation().subscribe({
+      next: (data) => {
+        this.currentLocation = data;
+        this.httpService.getFiveDayTemperaturesByName(this.currentLocation).toPromise().then(results => {
+          this.forecasts = this.mapWeatherResponseData(results.list);
+        });
+      }
+    }));
     this.subscriptions.push(this.httpService.getFiveDayTemperaturesByName(this.currentLocation).subscribe({
       next: (data) => {
         this.forecasts = this.mapWeatherResponseData(data.list);
