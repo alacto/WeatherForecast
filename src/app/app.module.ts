@@ -5,8 +5,10 @@ import {
   MatCardModule,
   MatToolbarModule,
   MatListModule,
-  MatDividerModule
+  MatDividerModule,
+  MatTabsModule
 } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CurrentTemperatureComponent } from './current-temperature/current-temperature.component';
 import { AppComponent } from './app.component';
@@ -21,11 +23,13 @@ import { FiveDayForecastComponent } from './five-day-forecast/five-day-forecast.
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     MatCardModule,
     MatDividerModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTabsModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

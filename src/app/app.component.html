@@ -1,3 +1,13 @@
 <mat-toolbar color='primary'>Detroit Labs Weather Forecaster</mat-toolbar>
-<current-temperature></current-temperature>
-<five-day-forecast></five-day-forecast>
+<mat-tab-group>
+    <mat-tab label="Current Temperature">
+        <div>
+            <current-temperature></current-temperature>
+        </div>
+    </mat-tab>
+    <mat-tab label="Five Day Forecast">
+        <div>
+            <five-day-forecast></five-day-forecast>
+        </div>
+    </mat-tab>
+</mat-tab-group>
