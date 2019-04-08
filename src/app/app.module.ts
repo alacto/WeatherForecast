@@ -11,6 +11,10 @@ import {
   MatDividerModule,
   MatTabsModule
 } from '@angular/material';
+import {
+  Routes,
+  RouterModule
+} from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CurrentTemperatureComponent } from './current-temperature/current-temperature.component';
@@ -19,6 +23,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { FiveDayForecastComponent } from './five-day-forecast/five-day-forecast.component';
 import { LocationDialogComponent } from './location-dialog/location-dialog.component';
 import { FormsModule } from '@angular/forms';
+
+const routes: Routes = [
+  {
+    path: 'current-temperature',
+    component: CurrentTemperatureComponent
+  },
+  {
+    path: 'five-day-forecast',
+    component: FiveDayForecastComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'current-temperature'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -38,7 +57,10 @@ import { FormsModule } from '@angular/forms';
     MatDividerModule,
     MatListModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    RouterModule.forRoot(
+      routes
+    )
   ],
   entryComponents: [
     LocationDialogComponent

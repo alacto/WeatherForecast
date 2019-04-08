@@ -7,7 +7,22 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    constructor(private locationService: LocationService) {
+    public tabs: any[];
+    constructor(
+        private locationService: LocationService
+        ) {
         this.locationService.setUserLocation();
+        this.tabs = [
+            {
+                path: 'current-temperature',
+                isActive: true,
+                label: 'Current Temperature'
+            },
+            {
+                path: 'five-day-forecast',
+                isActive: false,
+                label: 'Five Day Forecast'
+            }
+        ];
     }
 }
